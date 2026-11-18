@@ -1,0 +1,61 @@
+# ItemSkin 設定
+# 缺少的項目會在啟動與 /itemskin reload 時自動補上，原本的值會保留。
+config-version: 1
+
+# 聊天室訊息前綴
+prefix: "&8[&dItemSkin&8] &r"
+
+# ───────── 外觀檔案 ─────────
+# 外觀放在 plugins/ItemSkin/skins/ 底下，改完後用 /itemskin reload 重建材質包。
+#   2D：skins/2d/<名稱>.png
+#       （可選）skins/2d/<名稱>.png.mcmeta：動畫貼圖
+#   3D：skins/3d/<名稱>/ 資料夾，裡面放 Blockbench 匯出的 Java 物品模型 .json 與用到的 .png
+#       模型檔名用 model.json 或 <名稱>.json；資料夾裡只有一個 .json 時任何檔名都可以
+#       模型裡的貼圖路徑會自動改成指向同資料夾的 .png（依檔名比對）；找不到同名檔案時保留原值（可用原版貼圖）
+# 名稱只能用小寫英文、數字、底線、減號、點（例如 dragon_sword）
+skins:
+  # 單張 PNG 上限（KB）
+  max-texture-kb: 1024
+  # PNG 寬高上限（像素）
+  max-texture-size: 1024
+  # 單個 3D 模型 .json 上限（KB）
+  max-model-kb: 512
+  # 單個 3D 外觀最多幾張貼圖
+  max-textures-per-model: 32
+  # 外觀數量上限（2D + 3D）
+  max-skins: 500
+  # 2D 外觀套在劍、斧、鎬、鏟、鋤、三叉戟、重錘、棍子類物品時，改用「手持工具」的拿法（斜拿）
+  handheld-for-tools: true
+
+# ───────── 材質包 ─────────
+pack:
+  # 整個材質包上限（MB），超過時不發送並在後台警告
+  max-size-mb: 64
+  # 材質包支援的格式範圍（26.x 用戶端可以載入；物品外觀需要 1.21.4 以上的用戶端）
+  min-format: 46
+  max-format: 999
+  # 玩家登入後幾 tick 發送（20 tick = 1 秒）
+  join-delay-ticks: 20
+  # 登入時自動發送
+  send-on-join: true
+  # 是否強制接受（拒絕會被踢出）
+  required: false
+  # 重新載入後材質包有變動時，自動重新發送給線上玩家（玩家畫面會短暫重新載入材質）
+  resend-on-update: true
+
+# ───────── 套用規則 ─────────
+apply:
+  # 開啟後，每個外觀需要權限 itemskin.skin.<2d或3d>.<名稱>（或 itemskin.skin.*）
+  per-skin-permission: false
+  # 物品已經有其他插件或材質包設定的外觀（item_model）時，是否允許覆蓋
+  allow-override-other-models: false
+  # 不能套用外觀的物品材質（例如 BARRIER、COMMAND_BLOCK）
+  blocked-materials: []
+  # 編輯介面「隱藏標籤」預設是否開啟
+  tag-default: true
+
+update-checker:
+  # 啟動時在後台檢查 GitHub 上的新版本
+  check-on-startup: true
+  # 有新版本時，擁有 itemskin.version 權限的人登入 3 秒後收到提醒
+  notify-on-join: true
