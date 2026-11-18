@@ -1,0 +1,200 @@
+# ItemSkin 訊息
+# 支援 & 顏色碼與 &#RRGGBB；{名稱} 為變數。缺少的項目會自動補上。
+
+command:
+  unknown: "&c未知的指令，輸入 &f/{label} help &c查看說明"
+  no-permission: "&c你沒有權限使用這個指令"
+  player-only: "&c這個指令只能由玩家使用"
+  reloading: "&7正在重新載入並重建材質包…"
+  reloaded: "&a已重新載入：&f{skins} &a個外觀（2D {count2d}、3D {count3d}），略過 &f{skipped} &a個，材質包 &f{size}"
+  reload-busy: "&e上一次重新載入還沒完成，請稍候"
+
+help:
+  header: "&dItemSkin &7v{version}"
+  line: " &f/{label} {sub} &7- {desc}"
+  help: "顯示這個說明"
+  open: "開啟外觀編輯介面"
+  check: "查詢手上物品的外觀與材質包狀態"
+  pack: "重新接收材質包"
+  reload: "重新載入設定與外觀，並重建材質包"
+  version: "查看版本並檢查更新"
+
+check:
+  header: "&d手上物品外觀"
+  empty-hand: "&c請先把物品拿在主手上"
+  skin: " &7外觀：&f{skin} &8({type})"
+  skin-none: " &7外觀：&8沒有 ItemSkin 外觀"
+  skin-other: " &7外觀：&e由其他插件或材質包設定（{model}）"
+  skin-missing: " &c這個外觀已經不在目前的材質包裡（檔案被刪除或改名）"
+  tag-yes: " &7隱藏標籤：&a有"
+  tag-no: " &7隱藏標籤：&8無"
+  pack-line: " &7你的材質包：{status}"
+  pack-hint: " &7看不到外觀時輸入 &f/{label} pack &7重新接收"
+
+pack:
+  # 玩家材質包狀態（check 指令與介面共用）
+  status-loaded: "&a已載入最新版本"
+  status-outdated: "&e已載入舊版本，需要重新接收"
+  status-pending: "&e已發送，等待用戶端回應"
+  status-accepted: "&e已接受，下載中"
+  status-downloaded: "&e已下載，載入中"
+  status-declined: "&c你拒絕了材質包"
+  status-failed: "&c下載或載入失敗"
+  status-discarded: "&c材質包已被用戶端移除"
+  status-none: "&8尚未收到"
+  status-unavailable: "&c伺服器目前無法提供材質包"
+  # 發送
+  sent: "&a已發送材質包，請在畫面上接受"
+  cooldown: "&c請等 {seconds} 秒後再重新接收"
+  not-ready: "&c材質包尚未準備好，請稍後再試"
+  no-httphub: "&c伺服器沒有安裝或啟用 HttpHub，無法發送材質包"
+  no-url: "&c取不到材質包網址（HttpHub 端口未開啟或位址未知）"
+  updated-notify: "&d外觀已更新，正在重新發送材質包"
+  # 材質包提示畫面上的文字
+  prompt: "&d伺服器的自訂物品外觀材質包"
+  # pack.mcmeta 的描述（材質包列表中顯示）
+  description: "ItemSkin 自訂物品外觀"
+
+gui:
+  editor-title: "&8物品外觀編輯"
+  picker-title: "&8選擇外觀 &7({page}/{pages})"
+  filler: " "
+  info:
+    name: "&d使用方式"
+    lore:
+      - "&71. 左鍵把物品放進下方中間的空格"
+      - "&72. 選擇是否加上隱藏標籤"
+      - "&73. 選擇外觀後按「儲存」"
+      - "&7關閉介面時物品會自動還給你"
+  tag-on:
+    name: "&a隱藏標籤：開啟"
+    lore:
+      - "&7在物品上加入看不到的 ItemSkin 標籤"
+      - "&7不影響 Item-lock 的物品比對"
+      - ""
+      - "&e左鍵切換"
+  tag-off:
+    name: "&7隱藏標籤：關閉"
+    lore:
+      - "&7只改外觀，不加入標籤"
+      - ""
+      - "&e左鍵切換"
+  select-none:
+    name: "&f選擇外觀"
+    lore:
+      - "&7目前：&8未選擇"
+      - ""
+      - "&e左鍵開啟外觀清單"
+  select:
+    name: "&f選擇外觀"
+    lore:
+      - "&7目前：&f{skin} &8({type})"
+      - ""
+      - "&e左鍵開啟外觀清單"
+  save:
+    name: "&a儲存"
+    lore:
+      - "&7把選擇的外觀套用到放入的物品"
+      - ""
+      - "&e左鍵儲存"
+  remove:
+    name: "&c移除外觀"
+    lore:
+      - "&7把放入物品的 ItemSkin 外觀與標籤移除"
+      - ""
+      - "&e左鍵移除"
+  pack-status:
+    name: "&b材質包狀態"
+    lore:
+      - "&7你的狀態：{status}"
+      - "{item-line}"
+      - ""
+      - "&e左鍵重新接收材質包"
+  pack-item-none: "&7放入的物品：&8沒有 ItemSkin 外觀"
+  pack-item-ok: "&7放入的物品：&a外觀 {skin} 在材質包中"
+  pack-item-missing: "&7放入的物品：&c外觀 {skin} 已不在材質包中"
+  close:
+    name: "&c關閉"
+    lore:
+      - "&7物品會還給你"
+  skin:
+    name: "&f{skin}"
+    lore:
+      - "&7類型：&f{type}"
+      - "&7看不到圖示時請先接受材質包"
+      - ""
+      - "&e左鍵選擇"
+  skin-selected-lore: "&a✔ 目前選擇"
+  prev:
+    name: "&f上一頁"
+  next:
+    name: "&f下一頁"
+  back:
+    name: "&f返回"
+  filter:
+    name: "&f篩選：{filter}"
+    lore:
+      - "&e左鍵切換 全部 / 2D / 3D"
+  filter-all: "全部"
+  filter-2d: "2D"
+  filter-3d: "3D"
+  empty-list:
+    name: "&7沒有可用的外觀"
+    lore:
+      - "&7請管理員把檔案放進 plugins/ItemSkin/skins/"
+      - "&7再輸入 /itemskin reload"
+  type-2d: "2D"
+  type-3d: "3D"
+
+editor:
+  no-item: "&c請先放入物品"
+  no-skin: "&c請先選擇外觀"
+  skin-gone: "&c這個外觀已經不存在，請重新選擇"
+  no-skin-permission: "&c你沒有權限使用這個外觀"
+  blocked-material: "&c這種物品不能套用外觀"
+  other-model: "&c這個物品已經有其他插件設定的外觀，不能覆蓋"
+  saved: "&a已套用外觀 &f{skin}&a（隱藏標籤：{tag}）"
+  tag-yes: "有"
+  tag-no: "無"
+  removed: "&a已移除外觀"
+  nothing-to-remove: "&7這個物品沒有 ItemSkin 外觀"
+  returned-drop: "&e背包已滿，物品掉在你腳下"
+  already-open: "&c你已經開著外觀介面了"
+
+version:
+  current: "&fItemSkin &7版本 &e{version}"
+  checking: "&7正在檢查更新…"
+  failed: "&7檢查更新失敗：{reason}"
+  newer: "&a有新版本 &e{latest}&a（目前 {current}）！下載：&f{url}"
+  latest: "&a目前已是最新版本"
+  dev: "&e目前版本比 GitHub 新（開發版）"
+  join-notify: "&e[ItemSkin] 有新版本 &f{latest}&e（目前 {current}），下載：&f{url}"
+  reason-no-release: "目前還沒有發佈版本"
+  reason-http: "GitHub 回應 {code}"
+  reason-no-tag: "讀不到版本號"
+  reason-offline: "無法連線到 GitHub"
+
+console:
+  config-filled: "config.yml 已自動補上 {count} 個缺少的項目"
+  messages-filled: "messages.yml 已自動補上 {count} 個缺少的項目"
+  loaded: "已載入 {skins} 個外觀（2D {count2d}、3D {count3d}），略過 {skipped} 個，材質包 {size}，SHA-1 {hash}"
+  skip: "略過外觀 {skin}：{reason}"
+  reason-bad-name: "名稱只能用小寫英文、數字、底線、減號、點"
+  reason-too-large: "檔案太大（{size}，上限 {max}）"
+  reason-bad-png: "不是有效的 PNG"
+  reason-png-size: "圖片尺寸 {width}x{height} 超過上限 {max}"
+  reason-no-model: "資料夾裡找不到模型 .json（請命名為 model.json 或 {skin}.json）"
+  reason-bad-model: "模型 .json 格式錯誤：{error}"
+  reason-too-many-textures: "貼圖數量 {count} 超過上限 {max}"
+  reason-bad-texture-name: "貼圖檔名 {file} 不符合命名規則"
+  reason-read-error: "讀取失敗：{error}"
+  reason-limit: "外觀數量已達上限 {max}"
+  pack-too-large: "材質包大小 {size} 超過上限 {max}，不發送"
+  pack-build-failed: "材質包建立失敗：{error}"
+  httphub-missing: "沒有找到 HttpHub，材質包不會發送（外觀仍可套用，但玩家看不到）"
+  httphub-published: "材質包已交給 HttpHub：/itemskin/pack.zip"
+  httphub-not-running: "HttpHub 的 HTTP 伺服器沒有運作，玩家無法下載材質包"
+  update-newer: "有新版本 {latest}（目前 {current}）：{url}"
+  update-latest: "目前已是最新版本"
+  update-dev: "目前版本比 GitHub 新（開發版）"
+  update-failed: "檢查更新失敗：{reason}"

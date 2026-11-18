@@ -1,0 +1,48 @@
+name: ItemSkin
+version: '${project.version}'
+main: clre20.itemSkin.ItemSkin
+api-version: '26.1'
+author: clre20
+description: 放入物品、挑選 2D / 3D 外觀，透過 HttpHub 自動發送材質包
+website: https://github.com/clre20/ItemSkin
+softdepend: [ HttpHub ]
+
+commands:
+  itemskin:
+    description: ItemSkin 主指令
+    usage: /<command> [help|open|check|pack|reload|version]
+    aliases: [ items ]
+
+permissions:
+  itemskin.help:
+    description: 查看指令說明
+    default: true
+  itemskin.use:
+    description: 開啟外觀編輯介面，替物品套用或移除外觀
+    default: op
+  itemskin.check:
+    description: 查詢手上物品的外觀與自己的材質包狀態
+    default: true
+  itemskin.pack:
+    description: 重新接收材質包
+    default: true
+  itemskin.reload:
+    description: 重新載入設定、訊息與外觀，並重建材質包
+    default: op
+  itemskin.version:
+    description: 查看版本並檢查更新，有新版時登入會收到提醒
+    default: op
+  itemskin.skin.*:
+    description: 可使用所有外觀（只有 config 的 per-skin-permission 開啟時才需要）
+    default: op
+  itemskin.*:
+    description: 所有 ItemSkin 權限
+    default: op
+    children:
+      itemskin.help: true
+      itemskin.use: true
+      itemskin.check: true
+      itemskin.pack: true
+      itemskin.reload: true
+      itemskin.version: true
+      itemskin.skin.*: true
