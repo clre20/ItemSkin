@@ -47,7 +47,11 @@ public final class ItemSkin extends JavaPlugin {
 
         packs.connectHost();
         packs.rebuild(null);
-        updateNotifier.checkOnStartup();
+        if (getServer().getPluginManager().isPluginEnabled("HttpHub") && clre20.httpHub.api.HttpHubAPI.isAvailable()) {
+            clre20.httpHub.api.HttpHubAPI.registerUpdateCheck(this, "clre20/ItemSkin", getPluginMeta().getVersion(), "itemskin.version", null);
+        } else {
+            updateNotifier.checkOnStartup();
+        }
     }
 
     @Override
